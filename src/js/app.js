@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', e => {
   })
 
   // change currency 
-  document.querySelector('.currency-select').addEventListener('change', () => {
+  document.querySelector('.currency-select').addEventListener('change', (e) => {
     onFormSubmit()
   })
 
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', e => {
       currency,
     });
     ticketsUI.renderTickets(locations.lastSearch);
-    console.log('locations.lastSearch:', locations.lastSearch);
+    console.log('locations.lastSearch:', locations.lastSearch.currency);
   }
 
   modalFunc()

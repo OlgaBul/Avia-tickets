@@ -74,7 +74,7 @@ class Locations {
     return cities.reduce((acc, city) => {
       const country_name = this.countries[city.country_code].name; 
       const city_name = city.name || city.name_translations.en;
-      const full_name = `${city_name},${country_name}`;
+      const full_name = `${city_name},${country_name}`; 
       acc[city.code] = {
         ...city,
         country_name,

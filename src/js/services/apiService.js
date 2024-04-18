@@ -30,7 +30,6 @@ class Api {
   async airlines() {
     try {
       const response = await axios.get(`${this.url}/airlines`);
-      // console.log('response.data from airlines', response.data);
       return response.data;
     } catch (err) {
       console.log(err);
