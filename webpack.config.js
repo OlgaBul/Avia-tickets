@@ -67,12 +67,21 @@ module.exports = {
       },
     ],
   },
-  
+
   plugins: [
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({ filename: './style.css' }),
     new HtmlWebpackPlugin({
       template: 'index.html',
+      // FOR favicon ()
+      // new CopyWebpackPlugin({
+      //   patterns: [
+      //     {
+      //       from: path.resolve(__dirname, 'src/assets'),
+      //       to: path.resolve(__dirname, 'dist/assets')
+      //     }
+      //   ]
+      // })
     }),
   ],
 

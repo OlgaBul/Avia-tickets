@@ -1,5 +1,6 @@
 import api from '../services/apiService';
 import { formatDate } from '../helpers/date';
+import currencyUI from '../views/currency';
 
 class Locations {
   constructor(api, helpers) {
@@ -24,7 +25,7 @@ class Locations {
     this.cities = this.serializeCities(cities);
     this.shortCities = this.createShortCities(this.cities);
     this.airlines = this.serializeAirlines(airlines);
-    
+
     return response;
   }
 
@@ -72,15 +73,15 @@ class Locations {
 
   serializeCities(cities) {
     return cities.reduce((acc, city) => {
-      const country_name = this.countries[city.country_code].name; 
+      const country_name = this.countries[city.country_code].name;
       const city_name = city.name || city.name_translations.en;
-      const full_name = `${city_name},${country_name}`; 
+      const full_name = `${city_name},${country_name}`;
       acc[city.code] = {
         ...city,
         country_name,
         full_name,
       };
-      return acc;  
+      return acc;
     }, {})
   }
 
@@ -90,8 +91,10 @@ class Locations {
 
   async fetchTickets(params) {
     const response = await this.api.prices(params);
+    const currency = currencyUI.currencyValue;
     this.lastSearch = this.serializeTickets(response.data);
     this.lastSearch.map(ticket => ticket.idSym = `id-${Math.random()}`)
+    this.lastSearch.map(ticket => ticket.searchCurrency = `${currency}`)
     console.log('this.lastSearch', this.lastSearch);
   }
 
@@ -103,8 +106,8 @@ class Locations {
         destination_name: this.getCityNameByCode(ticket.destination),
         airline_logo: this.getAirlineLogoByCode(ticket.airline),
         airline_name: this.getAirlineNameByCode(ticket.airline),
-        departure_at: this.formatDate(ticket.departure_at, 'dd MMM yyyy hh:mm'), 
-        return_at: this.formatDate(ticket.return_at, 'dd MMM yyyy hh:mm'),
+        departure_at: this.formatDate(ticket.departure_at, 'dd MMM yyyy H:mm'),
+        return_at: this.formatDate(ticket.return_at, 'dd MMM yyyy H:mm'),
       };
     });
   }

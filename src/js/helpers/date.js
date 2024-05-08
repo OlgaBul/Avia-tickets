@@ -1,10 +1,10 @@
 import { format } from 'date-fns';
 
 /**
- * 
- * @param {String} str 
+ *
+ * @param {String} str
  * @param {String} type
- * 
+ *
  */
 
 export function formatDate(str, type) {

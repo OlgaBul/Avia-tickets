@@ -11,12 +11,12 @@ class TicketUI {
     if (!tickets.length) {
         this.showEmptyMsg();
         return;
-    } 
+    }
 
     let fragment = '';
     const currency = this.getCurrencySymbol();
 
-   
+
     Array.from(tickets).forEach(ticket => {
         const template = TicketUI.ticketTemplate(ticket, currency);
         // const template = TicketUI.ticketTemplate(ticket, this.getCurrencySymbol);
@@ -25,13 +25,13 @@ class TicketUI {
 
     this.container.insertAdjacentHTML('afterbegin', fragment);
   }
-    
+
 
   clearContainer() {
     this.container.innerHTML = '';
   }
 
-  showEmptyMsg(){ 
+  showEmptyMsg(){
     const template = TicketUI.emptyMsgTemplate();
     this.container.insertAdjacentHTML('afterbegin', template);
   }
@@ -52,7 +52,7 @@ class TicketUI {
         </div>
         <div class="d-flex align-items-center">
           <span class="ticket-airline-name">${ticket.airline_name}</span>
-        </div> 
+        </div>
         <div class="d-flex align-items-center ml-auto">
           <span class="ticket-price ">${ticket.price} ${currency}</span>
         </div>
@@ -67,13 +67,26 @@ class TicketUI {
           <span class="ticket-city">${ticket.destination_name}</span>
         </div>
       </div>
-      <div class="ticket-time-price d-flex align-items-center">
+      <div class="ticket-time-price d-flex align-items-center tops">
         <span class="ticket-time-departure">${ticket.departure_at}</span>
+      </div>
+      <div class="ticket-destination d-flex align-items-center">
+        <div class="d-flex align-items-center mr-auto">
+          <span class="ticket-city">${ticket.destination_name}</span>
+          <i class="medium material-icons">flight_takeoff</i>
+        </div>
+        <div class="d-flex align-items-center">
+          <i class="medium material-icons">flight_land</i>
+          <span class="ticket-city">${ticket.origin_name}</span>
+        </div>
+      </div>
+      <div class="ticket-time-price d-flex align-items-center tops">
+        <span class="ticket-time-departure">${ticket.return_at}</span>
       </div>
       <div class="d-flex align-items-center justify-items-between">
         <div class="ticket-additional-info d-flex align-items-center">
           <span class="ticket-transfers">Пересадок: ${ticket.transfers}</span>
-        </div> 
+        </div>
         <div class="ticket-additional-info d-flex align-items-center">
           <span class="ticket-flight-number">Номер рейса: ${ticket.flight_number}</span>
         </div>
