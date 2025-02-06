@@ -16,7 +16,20 @@
 - HTML
 - CSS
 - JS 
-- Materialize 
+- Materialize
+
+## Установка и запуск приложения:
+Клонировать репозиторий:
+
+    git clone https://github.com/OlgaBul/Task-list.git
+
+Установить зависимости:
+
+    npm install
+
+Запустить приложение:
+
+    npm run dev
 
 ## Скриншоты:
 ![My image](./src/images/Aviatickets.jpg)
