@@ -21,7 +21,7 @@
 ## Установка и запуск приложения:
 Клонировать репозиторий:
 
-    git clone https://github.com/OlgaBul/Task-list.git
+    git clone https://github.com/OlgaBul/Aviatickets.git
 
 Установить зависимости:
 
